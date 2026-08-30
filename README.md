@@ -31,13 +31,12 @@ jobs:
       issues: write
     steps:
       - name: 🚀 Run Label Blueprint
-        uses: klaasnicolaas/action-label-blueprint@v1
+        uses: klaasnicolaas/action-label-blueprint@v1.0.0
         with:
           labels-file: https://raw.githubusercontent.com/dutchdronesquad/.github/main/.github/labels.yml
-          prune: true
 ```
 
-Omit `prune` or set it to `false` when a repository should retain additional local labels that are not part of the shared manifest. Labels can include `aliases` when an existing label should be renamed without losing its issue and pull request assignments.
+Label Blueprint is non-destructive by default, so repositories retain additional local labels that are not part of the shared manifest. Enable `prune: true` only when a repository must match the central manifest exactly. Labels can include `aliases` when an existing label should be renamed without losing its issue and pull request assignments.
 
 ## Release Drafter
 
