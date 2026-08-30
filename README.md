@@ -30,15 +30,13 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: 🚀 Run Label Syncer
-        uses: srealmoreno/label-sync-action@v2.0.0
+      - name: 🚀 Run Label Blueprint
+        uses: klaasnicolaas/action-label-blueprint@v1.0.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          config-file: https://raw.githubusercontent.com/dutchdronesquad/.github/main/.github/labels.yml
-          clean-labels: true
+          labels-file: https://raw.githubusercontent.com/dutchdronesquad/.github/main/.github/labels.yml
 ```
 
-Set `clean-labels` to `false` when a repository should retain additional local labels that are not part of the shared manifest.
+Label Blueprint is non-destructive by default, so repositories retain additional local labels that are not part of the shared manifest. Enable `prune: true` only when a repository must match the central manifest exactly. Labels can include `aliases` when an existing label should be renamed without losing its issue and pull request assignments.
 
 ## Release Drafter
 
