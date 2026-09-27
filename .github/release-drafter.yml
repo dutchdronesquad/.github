@@ -1,68 +1,58 @@
 ---
 name-template: "v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
-change-template: "- [#$NUMBER]($URL) $TITLE @$AUTHOR"
-change-title-escapes: '\<*_&`'
+change-template: "- #$NUMBER $TITLE @$AUTHOR"
 sort-direction: ascending
 
 categories:
-  - title: "🚨 Breaking changes"
-    exclusive: true
-    semver-increment: major
-    when:
-      label: "breaking-change"
-  - title: "🔒 Security"
-    exclusive: true
-    when:
-      label: "security"
-  - title: "✨ New features"
-    exclusive: true
-    semver-increment: minor
-    when:
-      label: "new-feature"
-  - title: "🐛 Bug fixes"
-    exclusive: true
-    when:
-      label: "bugfix"
-  - title: "🚀 Enhancements"
-    exclusive: true
-    when:
-      labels:
-        - "enhancement"
-        - "refactor"
-        - "performance"
-  - title: "📚 Documentation"
-    exclusive: true
-    when:
-      label: "documentation"
-  - title: "🧰 Maintenance"
-    exclusive: true
-    when:
-      labels:
-        - "maintenance"
-        - "ci"
-  - title: "⬆️ Dependency updates"
-    collapse-after: 5
-    exclusive: true
-    when:
-      label: "dependencies"
-  - type: version-resolver
-    semver-increment: major
-    when:
-      label: "major"
-  - type: version-resolver
-    semver-increment: minor
-    when:
-      label: "minor"
-  - type: version-resolver
-    semver-increment: patch
   - type: pre-exclude
     when:
-      label: "sync"
+      label: sync
 
-# yamllint disable rule:line-length
+  - title: "🚨 Breaking changes"
+    semver-increment: major
+    when:
+      label: breaking-change
+  - title: "🔒 Security"
+    when:
+      label: security
+  - title: "✨ New features"
+    semver-increment: minor
+    when:
+      label: new-feature
+  - title: "🐛 Bug fixes"
+    when:
+      label: bugfix
+  - title: "🚀 Enhancements"
+    when:
+      labels: [enhancement, refactor, performance]
+  - title: "🧰 Maintenance"
+    when:
+      labels: [maintenance, ci]
+  - title: "📚 Documentation"
+    when:
+      label: documentation
+  - title: "⬆️ Dependency updates"
+    collapse-after: 5
+    when:
+      label: dependencies
+
+  # Explicit version labels also work without a changelog-category label.
+  - type: version-resolver
+    semver-increment: major
+    when:
+      label: major
+  - type: version-resolver
+    semver-increment: minor
+    when:
+      label: minor
+  - type: version-resolver
+    semver-increment: patch
+
 template: |
   ## What's changed
+
+  _To receive a notification on new releases, click on **Watch** > **Custom** > **Releases** on the top._
 
   $CHANGES
 
