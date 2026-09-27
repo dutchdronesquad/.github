@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared dependency policy for Dutch Drone Squad Python projects",
+  "extends": [
+    "github>dutchdronesquad/.github:renovate-base"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "poetry",
+        "pep621"
+      ],
+      "addLabels": [
+        "python"
+      ]
+    },
+    {
+      "matchManagers": [
+        "poetry",
+        "pep621"
+      ],
+      "matchDepTypes": [
+        "dev"
+      ],
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchManagers": [
+        "poetry",
+        "pep621"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    }
+  ]
+}
