@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared dependency policy for Dutch Drone Squad Node.js projects",
+  "extends": [
+    "github>dutchdronesquad/.github:renovate-base"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "packageRules": [
+    {
+      "matchManagers": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "npm dependencies",
+      "groupSlug": "npm-dependencies",
+      "automerge": true
+    }
+  ]
+}

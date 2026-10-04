@@ -34,7 +34,7 @@ For synchronization, add the `LABEL_SYNC_TOKEN` Actions secret here: a fine-grai
 
 ## Renovate
 
-Repositories retain only a small `.github/renovate.json`, plus any repository-specific overrides. Python projects extend the Python preset:
+Repositories retain only a small `.github/renovate.json`, plus any repository-specific overrides. Python projects extend the Python preset and Node.js projects the Node preset:
 
 ```json
 {
@@ -43,7 +43,14 @@ Repositories retain only a small `.github/renovate.json`, plus any repository-sp
 }
 ```
 
-Other repositories extend `github>dutchdronesquad/.github:renovate-base`. `renovate-base.json` contains common scheduling, dashboard and GitHub Actions policy. `renovate-python.json` extends it with Python dependency rules. `.github/renovate.json` maintains this repository's own action dependencies. CI runs the official Renovate validator.
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>dutchdronesquad/.github:renovate-node"]
+}
+```
+
+Other repositories extend `github>dutchdronesquad/.github:renovate-base`. `renovate-base.json` contains common scheduling, dashboard and GitHub Actions policy. `renovate-python.json` extends it with Python dependency rules. `renovate-node.json` extends it with vulnerability alerts and grouped, automerged npm minor and patch updates; repository-specific groups, such as related package families, stay local. `.github/renovate.json` maintains this repository's own action dependencies. CI runs the official Renovate validator.
 
 ## Maintenance issues
 
