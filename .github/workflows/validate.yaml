@@ -25,7 +25,7 @@ jobs:
       - name: Validate Renovate preset
         run: >-
           npx --yes --package=renovate@44.65.0 renovate-config-validator
-          --strict renovate-base.json renovate-python.json .github/renovate.json
+          --strict renovate-base.json renovate-python.json renovate-node.json .github/renovate.json
 
   maintenance:
     name: Maintenance tooling
