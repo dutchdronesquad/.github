@@ -46,6 +46,6 @@ jobs:
             dutchdronesquad/trackdraw
             dutchdronesquad/track-viewer
             dutchdronesquad/dds-platform
-            dutchdronesquad/obstacles
+            dutchdronesquad/track-assets
           mode: ${{ github.event_name == 'pull_request' && 'preview' || 'sync' }}
           prune: false
